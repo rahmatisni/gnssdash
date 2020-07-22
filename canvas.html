@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<body>
+<!-- <meta http-equiv="refresh" content="2" /> -->
+<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+<meta content="utf-8" http-equiv="encoding">
+<script src= "node_modules/jquery/dist/jquery.min.js"></script>
+<link rel= "stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+<script src= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<canvas id="myCanvas" width="2200" height="1200" style="border:1px solid #d3d3d3;">
+Your browser does not support the HTML5 canvas tag.</canvas>
+
+<script>
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+
+// Red rectangle
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(0, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(100, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(200, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(300, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(400, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(500, 0, 100, 1000);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(600, 0, 100, 1000);  
+ctx.stroke();
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(700, 0, 100, 1000);  
+ctx.stroke();
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(800, 0, 100, 1000);  
+ctx.stroke();
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(900, 0, 100, 1000);  
+ctx.stroke();
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "red";
+ctx.rect(1000, 0, 100, 1000);  
+ctx.stroke();
+
+
+
+ctx.beginPath();
+ctx.lineWidth = "2";
+ctx.strokeStyle = "blue";
+ctx.rect(0, 1010, 1110, 1);  
+ctx.stroke();
+ctx.beginPath();
+ctx.lineWidth = "2";
+ctx.strokeStyle = "blue";
+ctx.rect(1110, 0, 1, 1000);  
+ctx.stroke();
+
+ctx.font = "30px Arial";
+ctx.fillText("0", 1, 1050); 
+ctx.fillText("1", 100, 1050); 
+ctx.fillText("2", 200, 1050); 
+ctx.fillText("3", 300, 1050); 
+ctx.fillText("4", 400, 1050); 
+ctx.fillText("5", 500, 1050); 
+ctx.fillText("6", 600, 1050); 
+ctx.fillText("7", 700, 1050); 
+ctx.fillText("8", 800, 1050); 
+ctx.fillText("9", 900, 1050); 
+ctx.fillText("10", 1000, 1050);
+ctx.fillText("11", 1100, 1050); 
+ctx.fillText("0", 1130, 1000); 
+ctx.fillText("1", 1130, 900); 
+ctx.fillText("2", 1130, 800); 
+ctx.fillText("3", 1130, 700); 
+ctx.fillText("4", 1130, 600); 
+ctx.fillText("5", 1130, 500); 
+ctx.fillText("6", 1130, 400); 
+ctx.fillText("7", 1130, 300); 
+ctx.fillText("8", 1130, 200); 
+ctx.fillText("9", 1130, 100); 
+ctx.fillText("10", 1130, 10); 
+ctx.fillText("11", 1130, 1); 
+
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "black";
+ctx.rect(0, (1000), 20, 20);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "black";
+ctx.rect(550, (0), 20, 20);  
+ctx.stroke();
+
+ctx.beginPath();
+ctx.lineWidth = "1";
+ctx.strokeStyle = "black";
+ctx.rect(1100 , (1000), 20, 20);  
+ctx.stroke();
+
+// // $(document).ready(function(){
+setInterval(function() {
+  $.getJSON("posisi.json", function(json){
+    // var xs = (json[0].x);
+    // var ys = (json[0].y);
+    // console.log(json);
+    var xs = Object.values(json)[0];
+    var ys = Object.values(json)[1];
+    console.log(xs);
+    console.log(ys);
+    q = Math.round(xs);
+    w = Math.round(ys);
+    // q = 3;
+    // w = 5;
+    console.log(q*100);
+    console.log(w*100);
+    
+    ctx.beginPath();
+    ctx.lineWidth = "1";
+    ctx.strokeStyle = "red";
+    // ctx.rect(xs, ys, 50, 50);  
+    ctx.rect((q*100),(1000-(w*100)), 30, 30);  
+    ctx.stroke();
+    ctx.clearRect(0,0,30,30)
+  });
+}, 3000);  
+
+
+// // });
+
+// var previous = null;
+// var current = null;
+// setInterval(function() {
+//   $.getJSON("posisi.json", function(json) {
+//     current = JSON.stringify(json);
+//     console.log(current);
+//     if (previous && current && previous !== current) {
+//       console.log("update");
+//       location.reload();
+
+//       var xs = Object.values(json)[0];
+//       var ys = Object.values(json)[1];
+//       console.log(xs);
+//       console.log(ys);
+//       q = Math.round(xs);
+//       w = Math.round(ys);
+//       // q = 3;
+//       // w = 5;
+//       console.log(q*100);
+//       console.log(w*100);
+//       ctx.beginPath();
+//       ctx.lineWidth = "1";
+//       ctx.strokeStyle = "red";
+      
+//       // ctx.rect(xs, ys, 50, 50);  
+//       ctx.rect((q*100),(1000-(w*100)), 30, 30);  
+//       ctx.stroke();
+//     }
+//     previous = current;
+//     console.log("ga update nih");
+
+
+
+//     var xs = Object.values(json)[0];
+//     var ys = Object.values(json)[1];
+//     console.log(xs);
+//     console.log(ys);
+//     q = Math.round(xs);
+//     w = Math.round(ys);
+//     // q = 3;
+//     // w = 5;
+//     console.log(q*100);
+//     console.log(w*100);
+//     ctx.beginPath();
+//     ctx.lineWidth = "1";
+//     ctx.strokeStyle = "red";
+    
+//     // ctx.rect(xs, ys, 50, 50);  
+//     ctx.rect((q*100),(1000-(w*100)), 30, 30);  
+//     ctx.stroke();
+    
+//   });
+// }, 3000);   
+
+
+
+
+
+</script> 
+
+</body>
+</html>
